@@ -1,0 +1,172 @@
+Registration.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Page</title>
+  <style>
+    fieldset {
+      width: 500px;
+      background-image: url(n1.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    table tr td {
+      padding-top: 6px;
+      padding-bottom: 6px;
+    }
+    body {
+      color: white;
+    }
+  </style>
+  <script>
+    function validate() {
+      let fn = frm.fname.value;
+      for (let i = 0; i < fn.length; i++) {
+        let ch = fn.charCodeAt(i);
+        if ((ch < 65 || ch > 90) && (ch < 97 || ch > 122)) {
+          alert("Invalid firstname");
+          return false;
+        }
+      }
+
+      let ln = frm.lname.value;
+      for (let i = 0; i < ln.length; i++) {
+        let ch = ln.charCodeAt(i);
+        if ((ch < 65 || ch > 90) && (ch < 97 || ch > 122)) {
+          alert("Invalid lastname");
+          return false;
+        }
+      }
+
+      let phn = frm.phone.value;
+      if (phn.length !== 10) {
+        alert("Phone number should be exactly 10 digits");
+        return false;
+      }
+
+      let mail = frm.mailid.value;
+      if (!mail.includes("@") || !mail.includes(".")) {
+        alert("Invalid email");
+        return false;
+      }
+
+      let pwd = frm.pwd.value;
+      if (pwd.length > 8) {
+        alert("Password should not exceed 8 characters");
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+</head>
+<body style="background-image: url(nature.jpg); background-repeat: no-repeat; background-size: cover;">
+  <center>
+    <h2>Registration</h2>
+    <form name="frm" method="post" action="success.html" onsubmit="return validate()">
+      <fieldset>
+        <table>
+          <tr><td>First Name:</td><td><input type="text" name="fname" required /></td></tr>
+          <tr><td>Last Name:</td><td><input type="text" name="lname" required /></td></tr>
+          <tr><td>Phone no.:</td><td><input type="number" name="phone" required /></td></tr>
+          <tr><td>Mail Id:</td><td><input type="email" name="mailid" required /></td></tr>
+          <tr>
+            <td>Gender:</td>
+            <td colspan="2">
+              Male: <input type="radio" name="gender" value="male" />
+              Female: <input type="radio" name="gender" value="female" />
+            </td>
+          </tr>
+          <tr><td>DOB:</td><td><input type="date" name="dob" required /></td></tr>
+          <tr><td>User Name:</td><td><input type="text" name="uname" required /></td></tr>
+          <tr><td>Password:</td><td><input type="password" name="pwd" required /></td></tr>
+          <tr><td>Age:</td><td><input type="number" name="age" required /></td></tr>
+        </table>
+        <input type="submit" value="Register" />
+        <a href="login.html"><button type="button">Login</button></a>
+      </fieldset>
+    </form>
+    <p>Copyright CMRIT_2024</p>
+  </center>
+</body>
+</html>
+
+Success.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Success</title>
+</head>
+<body>
+  <h2>Registration Successful</h2>
+</body>
+</html>
+
+Login.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <style>
+    fieldset {
+      width: 500px;
+      background-image: url(nature.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    table tr td {
+      padding-top: 6px;
+      padding-bottom: 6px;
+    }
+  </style>
+  <script>
+    function validate() {
+      let pwd = frm.pwd.value;
+      if (pwd.length > 8) {
+        alert("Password should not exceed 8 characters");
+        return false;
+      }
+      return true;
+    }
+  </script>
+</head>
+<body style="background-image: url(n1.jpg); background-repeat: no-repeat; background-size: cover;">
+  <center>
+    <h2>Login</h2>
+    <form name="frm" method="post" action="success2.html" onsubmit="return validate()">
+      <fieldset>
+        <table>
+          <tr><td>User Name:</td><td><input type="text" name="uname" required /></td></tr>
+          <tr><td>Password:</td><td><input type="password" name="pwd" required /></td></tr>
+        </table>
+        <input type="submit" value="Login" />
+        <a href="Registration.html"><button type="button">Register</button></a>
+      </fieldset>
+    </form>
+    <p>Copyright CMRIT_2024</p>
+  </center>
+</body>
+</html>
+
+Success2.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Success</title>
+</head>
+<body>
+  <h2>Login Successful</h2>
+</body>
+</html>
