@@ -18,7 +18,7 @@ import { RouterModule, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component'; 
 imports: [RouterOutlet,RouterModule,HeaderComponent], 
  
-header.component.html:- 
+header.component.html
  
 <nav class="navbar navbar-expand-lg bg-body-tertiary"> 
     <div class="container-fluid"> 
