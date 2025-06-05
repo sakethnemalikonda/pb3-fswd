@@ -1,0 +1,113 @@
+Layout.js
+
+import './Layout.css';
+import { Outlet, Link } from "react-router-dom";
+const Layout = () => {
+  return (
+    <>
+      <nav className="App-header">
+        <ul>
+          <li className="logo">
+            <h1>MyWorld</h1>
+          </li>
+          <li>
+            <Link to="/" className="no">Home</Link>
+          </li>
+          <li>
+            <Link to="/blogs" className="no">Blogs</Link>
+          </li>
+          <li>
+            <Link to="/contact" className="no">Contact</Link>
+          </li>
+        </ul>
+      </nav>
+      <Outlet />
+    </>
+  );
+};
+export default Layout;
+
+Layout.css
+
+.App-header {
+  background-color: aqua;
+}
+li {
+  list-style: none;
+}
+ul {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  height: 50px;
+}
+.logo {
+  line-height: 10px;
+}
+.no {
+  text-decoration: none;
+  line-height: 50px;
+  font-weight: bold;
+}
+
+Home.js
+
+const Home = () => {
+  return <h1>Home</h1>;
+};
+export default Home;
+
+Contact.js
+
+const Contact = () => {
+  return <h1>Contact Me</h1>;
+};
+export default Contact;
+
+Blogs.js
+
+const Blogs = () => {
+  return <h1>Blog Articles</h1>;
+};
+export default Blogs;
+
+NoPage.js
+
+const NoPage = () => {
+  return <h1>404</h1>;
+};
+export default NoPage;
+
+index.js
+
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./pages/Layout";
+import Home from "./pages/Home";
+import Blogs from "./pages/Blogs";
+import Contact from "./pages/Contact";
+import NoPage from "./pages/NoPage";
+const root = ReactDOM.createRoot(document.getElementById('root'));
+export default function App1() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="blogs" element={<Blogs />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="*" element={<NoPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
+root.render(
+  <React.StrictMode>
+    <App1 />
+  </React.StrictMode>
+);
+reportWebVitals();
