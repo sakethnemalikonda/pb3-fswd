@@ -1,0 +1,70 @@
+ post.services.ts 
+import { Injectable } from '@angular/core'; 
+import { HttpClient } from '@angular/common/http'; 
+   
+@Injectable({ 
+  providedIn: 'root' 
+}) 
+export class PostService { 
+  private url = 'http://jsonplaceholder.typicode.com/posts'; 
+    
+  constructor(private httpClient: HttpClient) { } 
+   
+  getPosts(){ 
+    return this.httpClient.get(this.url); 
+  } 
+   
+} 
+ 
+App.module.ts 
+import { BrowserModule } from '@angular/platform-browser'; 
+import { NgModule } from '@angular/core'; 
+   
+import { AppComponent } from './app.component'; 
+import { HttpClientModule } from '@angular/common/http'; 
+   
+@NgModule({ 
+  declarations: [ 
+    AppComponent 
+  ], 
+  imports: [ 
+    BrowserModule, 
+    HttpClientModule 
+  ], 
+  providers: [], 
+  bootstrap: [AppComponent] 
+}) 
+export class AppModule { } 
+ 
+App.component.html 
+<h1>to fetch data from api in angular 17 - Tutsmake.com</h1> 
+   
+<ul class="list-group"> 
+  <li  
+      *ngFor="let post of posts" 
+      class="list-group-item"> 
+      {{ post.title }} 
+  </li> 
+</ul> 
+ 
+app.component.ts 
+import { Component, OnInit } from '@angular/core'; 
+import { PostService } from './services/post.service'; 
+   
+@Component({ 
+  selector: 'app-root', 
+  templateUrl: './app.component.html', 
+  styleUrls: ['./app.component.css'] 
+}) 
+export class AppComponent implements OnInit { 
+  posts:any; 
+   
+  constructor(private service:PostService) {} 
+   
+  ngOnInit() { 
+      this.service.getPosts() 
+        .subscribe(response => { 
+          this.posts = response; 
+        }); 
+  } 
+}
