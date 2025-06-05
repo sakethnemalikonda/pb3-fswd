@@ -1,13 +1,3 @@
-Create a simple Node.js server with routes login, register, profile and logout. 
- 
-Step 1:-Create package.json file initializing project using command npm(node package manager) 
- npm init (or) npm init –y 
-package.json file created show above fig.1. 
- Install express and nodemon use command 
-npm i express nodemon 
- 
-Code:- 
- 
 index.html:- 
 
 <!DOCTYPE html> 
